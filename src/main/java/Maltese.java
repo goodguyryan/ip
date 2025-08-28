@@ -4,7 +4,7 @@ public class Maltese {
     static Task[] tasks = new Task[100];
     static int tasksLength = 0;
 
-    public static void bootup() {
+    public static void printBootupMessage() {
         System.out.println("Hello I'm Maltese, your personal chatbot!");
         System.out.println("What can I do for you");
     }
@@ -40,7 +40,7 @@ public class Maltese {
         }
     }
 
-    public static void echoLoop() {
+    public static void processLoop() {
         String line;
         Scanner in = new Scanner(System.in);
 
@@ -66,7 +66,7 @@ public class Maltese {
     }
 
     public static void main(String[] args) {
-        bootup();
-        echoLoop();
+        printBootupMessage();
+        processLoop();
     }
 }
