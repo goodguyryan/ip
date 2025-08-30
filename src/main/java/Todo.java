@@ -6,6 +6,11 @@ public class Todo extends Task{
 
     @Override
     public String getStatusIcon() {
-        return "[T]"+super.getStatusIcon();
+        return "[T]" + super.getStatusIcon();
+    }
+
+    @Override
+    public String getTask() {
+        return super.getTask();
     }
 }

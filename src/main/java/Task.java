@@ -15,7 +15,11 @@ public class Task {
         return (isDone ? "[X]" : "[ ]"); // mark done task with X
     }
 
-    public void setDone(boolean isDoneStatus) {
-        this.isDone = isDoneStatus;
+    public void setDone(boolean isDone) {
+        this.isDone = isDone;
+    }
+
+    public String getTask() {
+        return this.getStatusIcon() + " " + this.getDescription();
     }
 }

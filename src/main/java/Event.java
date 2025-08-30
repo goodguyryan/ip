@@ -7,4 +7,14 @@ public class Event extends Task{
         this.from = from;
         this.to = to;
     }
+
+    @Override
+    public String getStatusIcon() {
+        return "[E]" + super.getStatusIcon();
+    }
+
+    @Override
+    public String getTask() {
+        return super.getTask() + "(from: " + this.from + " to: " + this.to + ")";
+    }
 }
