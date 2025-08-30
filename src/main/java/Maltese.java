@@ -45,6 +45,7 @@ public class Maltese {
             System.out.println("no todo found pls todo something");
             return;
         }
+        
         Todo newTodo = new Todo(todoTask);
         addTask(newTodo);
         System.out.println("Added the following todo:");
