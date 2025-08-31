@@ -45,7 +45,7 @@ public class Maltese {
             System.out.println("no todo found pls todo something");
             return;
         }
-        
+
         Todo newTodo = new Todo(todoTask);
         addTask(newTodo);
         System.out.println("Added the following todo:");
@@ -101,12 +101,7 @@ public class Maltese {
         }
 
         int firstSpace = command.indexOf(' ');
-        if (firstSpace == -1) {
-            System.out.println("you need to actually tell your commands to do something");
-            return;
-        }
-
-        String action = command.substring(0, firstSpace);
+        String action = (firstSpace == -1) ? command : command.substring(0, firstSpace);
         String args   = command.substring(firstSpace + 1);
 
         switch (action) {

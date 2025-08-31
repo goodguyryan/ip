@@ -1,0 +1,21 @@
+list
+mark 1
+todo
+todo do stuff
+list
+mark 1
+unmark 1
+deadline do more stuff /by tuesday
+list
+deadline do more stuff /by
+deadline     /by by sunday
+list
+event do even more stuff /from monday /to tuesday
+event do even more stuff /frommonday /totuesday
+list
+mark 2
+list
+mark 3
+unmark 2
+list
+bye
