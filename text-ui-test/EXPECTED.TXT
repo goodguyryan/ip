@@ -8,7 +8,7 @@ Enter: Added the following todo:
 [T][ ] do stuff
 Enter: 1.[T][ ] todo
 2.[T][ ] do stuff
-Enter: okie this task is done
+Enter: this task does not exist?
 Enter: okie this task is gone
 Enter: Added the following deadline:
 [D][ ] do more stuff(by: tuesday)

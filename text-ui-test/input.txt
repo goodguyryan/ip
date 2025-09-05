@@ -3,7 +3,7 @@ mark 1
 todo
 todo do stuff
 list
-mark 1
+mark -1
 unmark 1
 deadline do more stuff /by tuesday
 list
