@@ -102,7 +102,7 @@ public class Maltese {
 
         int firstSpace = command.indexOf(' ');
         String action = (firstSpace == -1) ? command : command.substring(0, firstSpace);
-        String args   = command.substring(firstSpace + 1);
+        String args   = (firstSpace == -1) ? "" : command.substring(firstSpace + 1);
 
         switch (action) {
         case "list":
