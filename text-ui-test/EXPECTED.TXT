@@ -2,40 +2,33 @@ Hello I'm Maltese, your personal chatbot!
 What can I do for you
 Enter: List is empty yippee
 Enter: my list does not have so many tasks
-Enter: Added the following todo:
-[T][ ] todo
+Enter: no todo found pls todo something
 Enter: Added the following todo:
 [T][ ] do stuff
-Enter: 1.[T][ ] todo
-2.[T][ ] do stuff
-Enter: this task does not exist?
+Enter: 1.[T][ ] do stuff
+Enter: negative task??
 Enter: okie this task is gone
 Enter: Added the following deadline:
 [D][ ] do more stuff(by: tuesday)
-Enter: 1.[T][ ] todo
-2.[T][ ] do stuff
-3.[D][ ] do more stuff(by: tuesday)
+Enter: 1.[T][ ] do stuff
+2.[D][ ] do more stuff(by: tuesday)
 Enter: invalid deadline format pls do task /by deadline
 Enter: invalid deadline format pls do task /by deadline
-Enter: 1.[T][ ] todo
-2.[T][ ] do stuff
-3.[D][ ] do more stuff(by: tuesday)
+Enter: 1.[T][ ] do stuff
+2.[D][ ] do more stuff(by: tuesday)
 Enter: Added the following event:
 [E][ ] do even more stuff(from: monday to: tuesday)
 Enter: fake event pls put event task /from from /to to
-Enter: 1.[T][ ] todo
-2.[T][ ] do stuff
-3.[D][ ] do more stuff(by: tuesday)
-4.[E][ ] do even more stuff(from: monday to: tuesday)
+Enter: 1.[T][ ] do stuff
+2.[D][ ] do more stuff(by: tuesday)
+3.[E][ ] do even more stuff(from: monday to: tuesday)
 Enter: okie this task is done
-Enter: 1.[T][ ] todo
-2.[T][X] do stuff
-3.[D][ ] do more stuff(by: tuesday)
-4.[E][ ] do even more stuff(from: monday to: tuesday)
+Enter: 1.[T][ ] do stuff
+2.[D][X] do more stuff(by: tuesday)
+3.[E][ ] do even more stuff(from: monday to: tuesday)
 Enter: okie this task is done
 Enter: okie this task is gone
-Enter: 1.[T][ ] todo
-2.[T][ ] do stuff
-3.[D][X] do more stuff(by: tuesday)
-4.[E][ ] do even more stuff(from: monday to: tuesday)
+Enter: 1.[T][ ] do stuff
+2.[D][ ] do more stuff(by: tuesday)
+3.[E][X] do even more stuff(from: monday to: tuesday)
 Enter: NOOOOOOOOOOOOO. See you soon o.0!

@@ -1,3 +1,9 @@
+package maltese;
+
+import maltese.task.Deadline;
+import maltese.task.Event;
+import maltese.task.Task;
+import maltese.task.Todo;
 import java.util.Scanner;
 
 public class Maltese {
