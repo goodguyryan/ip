@@ -15,7 +15,7 @@ public class Maltese {
     }
 
     public static void processMark(String taskNumber, boolean doneStatus) {
-        if (taskNumber.matches("[0-9]+")) {
+        try {
             int actualNumber = Integer.parseInt(taskNumber);
             if (actualNumber - 1 >= tasksLength) {
                 System.out.println("my list does not have so many tasks");
@@ -26,7 +26,7 @@ public class Maltese {
                 System.out.println(doneStatus ? "okie this task is done" : "okie this task is gone");
             }
         }
-        else {
+        catch (NumberFormatException e) {
             System.out.println("this task does not exist?");
         }
     }
@@ -102,7 +102,7 @@ public class Maltese {
 
         int firstSpace = command.indexOf(' ');
         String action = (firstSpace == -1) ? command : command.substring(0, firstSpace);
-        String args   = command.substring(firstSpace + 1);
+        String args   = (firstSpace == -1) ? "" : command.substring(firstSpace + 1);
 
         switch (action) {
         case "list":
@@ -146,6 +146,10 @@ public class Maltese {
 
     public static void main(String[] args) {
         printBootupMessage();
-        initProcessLoop();
+        try {
+            initProcessLoop();
+        } catch (RuntimeException e) {
+            System.out.println("Oh no i suddenly dieded :(");
+        }
     }
 }
