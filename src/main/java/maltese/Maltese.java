@@ -1,4 +1,8 @@
 package maltese;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import maltese.task.Deadline;
 import maltese.task.Event;
 import maltese.task.Task;
@@ -9,6 +13,8 @@ import java.util.ArrayList;
 
 public class Maltese {
     static ArrayList<Task> tasks = new ArrayList<>();
+    static String filePath = "src/main/java/maltese/tasks.txt";
+    static Task[] tasks = new Task[100];
     static int tasksLength = 0;
 
     public static void printBootupMessage() {
@@ -19,8 +25,48 @@ public class Maltese {
     public static void addTask(Task task) {
         tasks.add(task);
         tasksLength++;
+        updateFile();
     }
 
+    public static void addTaskFromFile(String s) {
+        char taskType = s.charAt(1);
+        char taskIsDone = s.charAt(4);
+        String taskDescription = s.substring(7);
+
+        switch (taskType) {
+        case 'T':
+            processTodo(taskDescription);
+            break;
+        case 'D':
+            processDeadline(taskDescription);
+            break;
+        case 'E':
+            processEvent(taskDescription);
+            break;
+        default:
+            return;
+        }
+
+        if (taskIsDone == 'X') {
+            processMark(Integer.toString(tasksLength), true);
+        }
+    }
+
+    public static void updateFile() {
+        try {
+            FileWriter fw = new FileWriter(filePath);
+            for (Task task : tasks) {
+                if (task == null) {
+                    break;
+                }
+                fw.write(task.getTask());
+                fw.write(System.lineSeparator());
+            }
+            fw.close();
+        } catch (IOException e) {
+            System.out.println("Error writing to file" + e.getMessage());
+        }
+    }
     public static void processMark(String taskNumber, boolean doneStatus) {
         try {
             int actualNumber = Integer.parseInt(taskNumber);
@@ -36,6 +82,7 @@ public class Maltese {
         catch (NumberFormatException e) {
             System.out.println("this task does not exist?");
         }
+        updateFile();
     }
 
     public static void printList() {
@@ -176,7 +223,23 @@ public class Maltese {
         System.out.println("NOOOOOOOOOOOOO. See you soon o.0!");
     }
 
+    public static void loadTasksFromFile() {
+        try {
+            File f = new File(filePath);
+            Scanner s = new Scanner(f);
+            while (s.hasNext()) {
+                addTaskFromFile(s.nextLine());
+            }
+            for (int i = 0; i < 20; i++) {
+                System.out.println();
+            }
+        } catch (FileNotFoundException e)  {
+            System.out.println("File does not exist" + e.getMessage());
+        }
+    }
+
     public static void main(String[] args) {
+        loadTasksFromFile();
         printBootupMessage();
         try {
             initProcessLoop();
