@@ -30,7 +30,7 @@ public class Maltese {
                 System.out.println("negative task??");
             } else {
                 tasks.get(actualNumber - 1).setDone(doneStatus);
-                System.out.println(doneStatus ? "okie this task is done" : "okie this task is gone");
+                System.out.println(doneStatus ? "okie this task is done" : "okie this task is still doing");
             }
         }
         catch (NumberFormatException e) {
@@ -101,6 +101,28 @@ public class Maltese {
         System.out.println(newEvent.getTask());
     }
 
+    public static void processDelete(String deleteID) {
+        try{
+            int deleteInt = Integer.parseInt(deleteID);
+            if (deleteInt - 1 >= tasksLength) {
+                System.out.println("I do not have that many tasks!");
+                return;
+            }
+            if (deleteInt - 1< 0) {
+                System.out.println("Negative tasks!?");
+                return;
+            }
+
+            System.out.println("Deleting the following task:");
+            System.out.println(tasks.get(deleteInt - 1).getTask());
+            tasks.remove(deleteInt - 1);
+            tasksLength--;
+            System.out.println("You have " + tasksLength + " tasks left");
+        } catch (NumberFormatException e) {
+            System.out.println("That is not a number");
+        }
+    }
+
     public static void processCommand(String command) {
         if (command == null || command.isBlank()) {
             System.out.println("write something plssssss");
@@ -129,6 +151,9 @@ public class Maltese {
             break;
         case "event":
             processEvent(args);
+            break;
+        case "delete":
+            processDelete(args);
             break;
         default:
             System.out.println("i don't recognise this at all");
