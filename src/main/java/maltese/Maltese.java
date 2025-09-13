@@ -1,13 +1,14 @@
 package maltese;
-
 import maltese.task.Deadline;
 import maltese.task.Event;
 import maltese.task.Task;
 import maltese.task.Todo;
+
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Maltese {
-    static Task[] tasks = new Task[100];
+    static ArrayList<Task> tasks = new ArrayList<>();
     static int tasksLength = 0;
 
     public static void printBootupMessage() {
@@ -16,7 +17,7 @@ public class Maltese {
     }
 
     public static void addTask(Task task) {
-        tasks[tasksLength] = task;
+        tasks.add(task);
         tasksLength++;
     }
 
@@ -28,7 +29,7 @@ public class Maltese {
             } else if (actualNumber - 1 < 0) {
                 System.out.println("negative task??");
             } else {
-                tasks[actualNumber - 1].setDone(doneStatus);
+                tasks.get(actualNumber - 1).setDone(doneStatus);
                 System.out.println(doneStatus ? "okie this task is done" : "okie this task is gone");
             }
         }
@@ -42,7 +43,7 @@ public class Maltese {
             System.out.println("List is empty yippee");
         }
         for (int i = 0; i < tasksLength; i++) {
-            System.out.println((i + 1) + "." + tasks[i].getTask());
+            System.out.println((i + 1) + "." + tasks.get(i).getTask());
         }
     }
 
