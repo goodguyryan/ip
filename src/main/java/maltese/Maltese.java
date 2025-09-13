@@ -14,7 +14,6 @@ import java.util.ArrayList;
 public class Maltese {
     static ArrayList<Task> tasks = new ArrayList<>();
     static String filePath = "src/main/java/maltese/tasks.txt";
-    static Task[] tasks = new Task[100];
     static int tasksLength = 0;
 
     public static void printBootupMessage() {
