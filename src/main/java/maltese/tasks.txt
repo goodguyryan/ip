@@ -1,0 +1,3 @@
+[T][X] homework
+[D][ ] lab /by 2359
+[E][X] birthday /from 2pm /to 3pm
