@@ -3,6 +3,7 @@ package maltese;
 import maltese.task.Deadline;
 import maltese.task.Event;
 import maltese.task.Todo;
+import maltese.task.Task;
 
 public class Parser {
     public static void processMark(String taskNumber, boolean doneStatus, boolean isSilent) {
@@ -108,6 +109,28 @@ public class Parser {
         }
     }
 
+    public static void processFind(String findKeyword) {
+        if (findKeyword == null || findKeyword.isBlank()) {
+            System.out.println("You have tof ind something");
+            return;
+        }
+
+        boolean isFound = false;
+        for (Task task: TaskList.tasks) {
+            if (task.getDescription().contains(findKeyword)) {
+                if (!isFound) {
+                    System.out.println("Here are the matching tasks in the list:");
+                    isFound = true;
+                }
+                System.out.println(task.getTask());
+            }
+        }
+
+        if (!isFound) {
+            System.out.println("No tasks in the list recognises this keyword");
+        }
+    }
+
     public static void processCommand(String command) {
         if (command == null || command.isBlank()) {
             System.out.println("write something plssssss");
@@ -139,6 +162,9 @@ public class Parser {
             break;
         case "delete":
             processDelete(args);
+            break;
+        case "find":
+            processFind(args);
             break;
         default:
             System.out.println("i don't recognise this at all");
