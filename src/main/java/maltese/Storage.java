@@ -8,9 +8,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Handles persistence of tasks to and from a text file.
+ * Errors are reported via printed messages; in
+ */
 public class Storage {
     static String filePath = "src/main/java/maltese/tasks.txt";
 
+    /**
+     * Adds a task parsed from a serialized line.
+     *
+     * @param s Serialized task line.
+     */
     public static void addTaskFromFile(String s) {
         char taskType = s.charAt(1);
         char taskIsDone = s.charAt(4);
@@ -35,6 +44,10 @@ public class Storage {
         }
     }
 
+    /**
+     * Writes all tasks to the tasks file.
+     * I/O errors print an error message.
+     */
     public static void updateFile() {
         try {
             FileWriter fw = new FileWriter(filePath);
@@ -51,7 +64,11 @@ public class Storage {
         }
     }
 
-    public static void loadTasksFromFile() {
+    /**
+     * Loads tasks from the tasks file.
+     * Missing file prints an error message.
+     */
+    public void loadTasksFromFile() {
         try {
             File f = new File(filePath);
             Scanner s = new Scanner(f);

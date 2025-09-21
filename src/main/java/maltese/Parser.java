@@ -5,7 +5,20 @@ import maltese.task.Event;
 import maltese.task.Todo;
 import maltese.task.Task;
 
+/**
+ * Parses user input and dispatches task commands.
+ * Errors are reported via printed messages.
+ */
 public class Parser {
+
+    /**
+     * Marks or unmarks the task at the given 1-based index.
+     * Invalid or out-of-range indices print an error and do nothing.
+     *
+     * @param taskNumber 1-based index of the task.
+     * @param doneStatus True to mark as done; false to unmark.
+     * @param isSilent True to suppress output.
+     */
     public static void processMark(String taskNumber, boolean doneStatus, boolean isSilent) {
         try {
             int actualNumber = Integer.parseInt(taskNumber);
@@ -26,6 +39,13 @@ public class Parser {
         Storage.updateFile();
     }
 
+    /**
+     * Adds a todo task from the given description.
+     * Blank descriptions print an error and are ignored.
+     *
+     * @param todoTask Description of the todo.
+     * @param isSilent True to suppress output.
+     */
     public static void processTodo(String todoTask, boolean isSilent) {
         if (todoTask.isBlank()) {
             System.out.println("no todo found pls todo something");
@@ -40,6 +60,13 @@ public class Parser {
         }
     }
 
+    /**
+     * Adds a deadline in the form "description /by when".
+     * Missing delimiter or blank fields print an error and are ignored.
+     *
+     * @param deadlineTask Raw deadline string.
+     * @param isSilent True to suppress output.
+     */
     public static void processDeadline(String deadlineTask, boolean isSilent) {
         int byIndex= deadlineTask.indexOf(" /by ");
         if (byIndex == -1) {
@@ -62,6 +89,13 @@ public class Parser {
         }
     }
 
+    /**
+     * Adds an event in the form "description /from start /to end".
+     * Missing delimiters or blank fields print an error and are ignored.
+     *
+     * @param eventTask Raw event string.
+     * @param isSilent True to suppress output.
+     */
     public static void processEvent(String eventTask, boolean isSilent) {
         int fromIndex = eventTask.indexOf(" /from ");
         int toIndex = eventTask.indexOf(" /to ");
@@ -86,6 +120,12 @@ public class Parser {
         }
     }
 
+    /**
+     * Deletes the task at the given 1-based index.
+     * Non-numeric or out-of-range indices print an error and are ignored.
+     *
+     * @param deleteID 1-based index of the task.
+     */
     public static void processDelete(String deleteID) {
         try{
             int deleteInt = Integer.parseInt(deleteID);
@@ -109,6 +149,12 @@ public class Parser {
         }
     }
 
+    /**
+     * Prints tasks containing the given keyword.
+     * Null or blank keywords print an error and are ignored.
+     *
+     * @param findKeyword Keyword to search for.
+     */
     public static void processFind(String findKeyword) {
         if (findKeyword == null || findKeyword.isBlank()) {
             System.out.println("You have tof ind something");
@@ -130,7 +176,12 @@ public class Parser {
             System.out.println("No tasks in the list recognises this keyword");
         }
     }
-
+    /**
+     * Processes a single command line.
+     * Null, blank, or unknown commands print an error and do nothing.
+     *
+     * @param command Raw user command.
+     */
     public static void processCommand(String command) {
         if (command == null || command.isBlank()) {
             System.out.println("write something plssssss");
