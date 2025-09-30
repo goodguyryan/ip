@@ -77,7 +77,7 @@ public class Storage {
                     System.out.println("failed to create a new file T-T");
                     return;
                 }
-                System.out.println("created new file yippee");
+                System.out.println("created new file to store your tasks yippee");
             } catch (IOException e) {
                 System.out.println("this file cant be created" + e.getMessage());
             }
