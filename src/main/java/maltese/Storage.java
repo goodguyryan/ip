@@ -13,7 +13,7 @@ import java.util.Scanner;
  * Errors are reported via printed messages; in
  */
 public class Storage {
-    static String filePath = "src/main/java/maltese/tasks.txt";
+    static String filePath = "tasks.txt";
 
     /**
      * Adds a task parsed from a serialized line.
@@ -69,8 +69,21 @@ public class Storage {
      * Missing file prints an error message.
      */
     public void loadTasksFromFile() {
+        File f = new File(filePath);
+        if (!f.exists()) {
+            try {
+                boolean created = f.createNewFile();
+                if (!created) {
+                    System.out.println("failed to create a new file T-T");
+                    return;
+                }
+                System.out.println("created new file yippee");
+            } catch (IOException e) {
+                System.out.println("this file cant be created" + e.getMessage());
+            }
+        }
+
         try {
-            File f = new File(filePath);
             Scanner s = new Scanner(f);
             while (s.hasNext()) {
                 addTaskFromFile(s.nextLine());
